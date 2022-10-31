@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// 
+// 
+// Barış Önurme 29 Ekim 2022
+// Telefon: 507 336 30 96
+// Email: barisonurme@icloud.com
+// 
+// 
+
+import { useState } from "react";
+import Login from "./components/Login";
+import TCMB from "./components/TCMB";
 
 function App() {
+  // Login state kontrolü
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const loginHandler = (state) => {
+    setIsLoggedIn(state);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex justify-center items-center">
+      {!isLoggedIn && <Login onLogin={loginHandler} />}
+      {isLoggedIn && <TCMB />}
     </div>
   );
 }
